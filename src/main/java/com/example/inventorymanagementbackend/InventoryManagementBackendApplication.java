@@ -1,13 +1,13 @@
-package com.example.myproject;
+package com.example.inventorymanagementbackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyprojectApplication {
+public class InventoryManagementBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MyprojectApplication.class, args);
+		SpringApplication.run(InventoryManagementBackendApplication.class, args);
 	}
 
 }

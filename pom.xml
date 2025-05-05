@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>Inventory-Management-backend</artifactId>
+	<artifactId>inventory-management-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Inventory-Management-backend</name>
-	<description>Demo project for Spring Boot</description>
+	<name>inventory-management-backend</name>
+	<description>Inventory Management Backend System</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -84,6 +84,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+						<mainClass>com.example.inventorymanagementbackend.InventoryManagementBackendApplication</mainClass>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -94,5 +95,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

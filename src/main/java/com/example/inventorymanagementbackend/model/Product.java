@@ -1,4 +1,4 @@
-package com.example.myproject.model;
+package com.example.inventorymanagementbackend.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -31,6 +31,10 @@ public class Product {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    // Default no-argument constructor required by JPA
+    public Product() {
+    }
 
     public Product(Long id, String name, String description, BigDecimal price, Integer stockQuantity, String status,
             Category category, User supplier, LocalDateTime createdAt, LocalDateTime updatedAt) {

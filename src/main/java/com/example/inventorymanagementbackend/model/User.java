@@ -1,4 +1,4 @@
-package com.example.myproject.model;
+package com.example.inventorymanagementbackend.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -58,6 +58,10 @@ public class User {
 
     @OneToMany(mappedBy = "supplier") // Assuming User is a supplier and makes Offers
     private List<Offer> offersMade = new ArrayList<>();
+
+    // Default no-argument constructor required by JPA
+    public User() {
+    }
 
     public User(Long id, String username, String email, String password, String firstname, String lastname,
             String address, String phoneNumber, String workAddress, String companyContactNumber, String companyEmail,
@@ -235,10 +239,4 @@ public class User {
     public void setOffersMade(List<Offer> offersMade) {
         this.offersMade = offersMade;
     }
-
-    // Assuming User has a PurchaseHistory (One-to-One or One-to-Many?)
-    // Based on the diagram, it looks like a separate entity
-    // We'll map it from the PurchaseHistory side
-
-    // Constructors, Getters, and Setters
 }

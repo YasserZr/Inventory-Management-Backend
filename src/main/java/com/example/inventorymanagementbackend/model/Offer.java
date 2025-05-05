@@ -1,4 +1,4 @@
-package com.example.myproject.model;
+package com.example.inventorymanagementbackend.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -37,6 +37,10 @@ public class Offer {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    // Default no-argument constructor required by JPA
+    public Offer() {
+    }
 
     // Constructors, Getters, and Setters
     public Offer(Long offerId, String title, String description, Product product, User supplier,
@@ -160,6 +164,4 @@ public class Offer {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-    
 }

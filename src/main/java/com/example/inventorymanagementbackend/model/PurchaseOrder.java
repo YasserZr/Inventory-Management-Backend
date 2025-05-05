@@ -1,4 +1,4 @@
-package com.example.myproject.model;
+package com.example.inventorymanagementbackend.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -45,6 +45,10 @@ public class PurchaseOrder {
 
     @OneToMany(mappedBy = "purchaseOrder")
     private List<PurchaseOrderLine> purchaseOrderLines = new ArrayList<>();
+
+    // Default no-argument constructor required by JPA
+    public PurchaseOrder() {
+    }
 
     public PurchaseOrder(Long poId, String status, BigDecimal totalAmount, LocalDateTime orderDate,
             LocalDateTime deliveryDate, String paymentStatus, String paymentMethod, String shippingAddress,
@@ -195,6 +199,4 @@ public class PurchaseOrder {
     public void setPurchaseOrderLines(List<PurchaseOrderLine> purchaseOrderLines) {
         this.purchaseOrderLines = purchaseOrderLines;
     }
-
-    // Constructors, Getters, and Setters
 }

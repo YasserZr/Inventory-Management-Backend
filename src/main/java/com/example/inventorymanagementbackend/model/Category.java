@@ -1,4 +1,4 @@
-package com.example.myproject.model;
+package com.example.inventorymanagementbackend.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -20,6 +20,11 @@ public class Category {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    // Default no-argument constructor required by JPA
+    public Category() {
+    }
+    
     // Constructors, Getters, and Setters
     public Category(Long categoryId, String name, String description, LocalDateTime createdAt,
             LocalDateTime updatedAt) {
@@ -69,5 +74,4 @@ public class Category {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-    
 }
