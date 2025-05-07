@@ -49,14 +49,10 @@ public class User {
 
     private String image;
 
-    // No direct mapping for methods in the model
-    // (Authenticate(), Activate_user(roles), etc.)
-    // These would typically be part of service layer logic
-
     @OneToMany(mappedBy = "orderedBy")
     private List<PurchaseOrder> purchaseOrders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "supplier") // Assuming User is a supplier and makes Offers
+    @OneToMany(mappedBy = "supplier")
     private List<Offer> offersMade = new ArrayList<>();
 
     // Default no-argument constructor required by JPA
@@ -86,6 +82,99 @@ public class User {
         this.image = image;
         this.purchaseOrders = purchaseOrders;
         this.offersMade = offersMade;
+    }
+
+    // Builder pattern implementation
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private final User user = new User();
+
+        public Builder username(String username) {
+            user.setUsername(username);
+            return this;
+        }
+
+        public Builder email(String email) {
+            user.setEmail(email);
+            return this;
+        }
+
+        public Builder password(String password) {
+            user.setPassword(password);
+            return this;
+        }
+
+        public Builder firstname(String firstname) {
+            user.setFirstname(firstname);
+            return this;
+        }
+
+        public Builder lastname(String lastname) {
+            user.setLastname(lastname);
+            return this;
+        }
+
+        public Builder address(String address) {
+            user.setAddress(address);
+            return this;
+        }
+
+        public Builder phoneNumber(String phoneNumber) {
+            user.setPhoneNumber(phoneNumber);
+            return this;
+        }
+
+        public Builder workAddress(String workAddress) {
+            user.setWorkAddress(workAddress);
+            return this;
+        }
+
+        public Builder companyContactNumber(String companyContactNumber) {
+            user.setCompanyContactNumber(companyContactNumber);
+            return this;
+        }
+
+        public Builder companyEmail(String companyEmail) {
+            user.setCompanyEmail(companyEmail);
+            return this;
+        }
+
+        public Builder role(String role) {
+            user.setRole(role);
+            return this;
+        }
+
+        public Builder rating(Double rating) {
+            user.setRating(rating);
+            return this;
+        }
+
+        public Builder serviceQuality(String serviceQuality) {
+            user.setServiceQuality(serviceQuality);
+            return this;
+        }
+
+        public Builder createdAt(LocalDateTime createdAt) {
+            user.setCreatedAt(createdAt);
+            return this;
+        }
+
+        public Builder updatedAt(LocalDateTime updatedAt) {
+            user.setUpdatedAt(updatedAt);
+            return this;
+        }
+
+        public Builder image(String image) {
+            user.setImage(image);
+            return this;
+        }
+
+        public User build() {
+            return user;
+        }
     }
 
     public Long getId() {
