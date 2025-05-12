@@ -2,7 +2,12 @@
 
 ## Description
 
-This project is the backend for an Inventory Management System. It provides RESTful APIs to manage products, categories, suppliers, purchase orders, and user authentication.
+This project is the backend for a comprehensive Inventory Management System. It provides a robust set of RESTful APIs designed to manage various aspects of inventory, including but not limited to:
+- Product cataloging and categorization.
+- Supplier information and contract management.
+- Purchase order creation and tracking.
+- User authentication and authorization for secure access.
+The system aims to streamline inventory operations, improve data accuracy, and provide a scalable backend solution.
 
 ## Technologies Used
 
@@ -55,18 +60,33 @@ This project is the backend for an Inventory Management System. It provides REST
 
 ## API Endpoints
 
-The application exposes various RESTful endpoints for managing resources. Key controllers include:
+The application exposes various RESTful endpoints, typically under the `/api/v1` base path, for managing resources. All request and response bodies are in JSON format.
 
--   `AuthController`: Handles user registration and login.
--   `CategoryController`: Manages product categories.
--   `ProductController`: Manages products.
--   `SupplierContractController`: Manages supplier contracts.
--   `PurchaseOrderController`: Manages purchase orders.
--   `UserController`: Manages user-related operations.
--   `OfferController`: Manages offers.
+Key controllers include:
 
+-   `AuthController` (`/api/v1/auth`): Handles user registration (`/register`) and login (`/login`) to obtain JWT tokens.
+-   `CategoryController` (`/api/v1/categories`): Manages product categories (CRUD operations).
+-   `ProductController` (`/api/v1/products`): Manages products, including searching and filtering.
+-   `SupplierContractController` (`/api/v1/supplier-contracts`): Manages supplier contracts.
+-   `PurchaseOrderController` (`/api/v1/purchase-orders`): Manages purchase orders.
+-   `UserController` (`/api/v1/users`): Manages user-related operations, such as fetching user details.
+-   `OfferController` (`/api/v1/offers`): Manages special offers or discounts on products.
 
-For detailed API documentation, you can explore the Swagger UI (if configured) or refer to the controller classes in the `src/main/java/com/example/inventorymanagementbackend/controller` directory.
+For detailed API documentation, including request/response schemas and specific endpoint paths, you can explore the Swagger UI (if configured, typically at `/swagger-ui.html`) or refer to the controller classes in the `src/main/java/com/example/inventorymanagementbackend/controller` directory.
+
+## Security
+
+-   **Authentication**: Implemented using Spring Security with JSON Web Tokens (JWT). Users authenticate via the `/api/v1/auth/login` endpoint to receive a JWT.
+-   **Authorization**: Secured endpoints require a valid JWT in the `Authorization` header (e.g., `Authorization: Bearer <token>`). Role-based access control can be configured to restrict access to certain APIs based on user roles.
+
+## Configuration
+
+Key application configurations are managed in `src/main/resources/application.properties`. This includes:
+-   Server port (e.g., `server.port=8080`).
+-   Database connection details (URL, username, password for H2 or other configured databases).
+-   JWT secret key and expiration time.
+-   Flyway settings.
+-   Logging levels.
 
 ## Database Migrations
 
@@ -84,29 +104,29 @@ To run the automated tests:
 
 ```
 Inventory-Management-backend/
-├── Dockerfile                # Docker configuration
-├── pom.xml                   # Maven project configuration
+├── Dockerfile                # Docker configuration for containerizing the application
+├── pom.xml                   # Maven project configuration, dependencies, and build settings
 ├── mvnw                      # Maven wrapper script (Linux/macOS)
 ├── mvnw.cmd                  # Maven wrapper script (Windows)
 ├── src/
 │   ├── main/
-│   │   ├── java/             # Java source code
+│   │   ├── java/             # Core Java source code for the application
 │   │   │   └── com/example/inventorymanagementbackend/
-│   │   │       ├── config/       # Spring Security, JWT, Jackson configurations
-│   │   │       ├── controller/   # REST API controllers
-│   │   │       ├── dto/          # Data Transfer Objects
-│   │   │       ├── exception/    # Custom exception handlers
-│   │   │       ├── model/        # JPA entities
-│   │   │       ├── repository/   # Spring Data JPA repositories
-│   │   │       └── service/      # Business logic services
+│   │   │       ├── config/       # Spring Security, JWT, Jackson, and other bean configurations
+│   │   │       ├── controller/   # REST API controllers handling HTTP requests
+│   │   │       ├── dto/          # Data Transfer Objects for API request/response bodies
+│   │   │       ├── exception/    # Custom exception classes and global exception handlers
+│   │   │       ├── model/        # JPA entities representing database tables
+│   │   │       ├── repository/   # Spring Data JPA repositories for database interactions
+│   │   │       └── service/      # Business logic and service layer components
 │   │   └── resources/
-│   │       ├── application.properties # Application configuration
-│   │       ├── db/migration/        # Flyway database migration scripts
-│   │       ├── static/              # Static resources (e.g., CSS, JS)
-│   │       └── templates/           # Server-side templates (if any)
+│   │       ├── application.properties # Main application configuration file
+│   │       ├── db/migration/        # Flyway database migration SQL scripts (versioned)
+│   │       ├── static/              # Static web resources (e.g., CSS, JavaScript, images)
+│   │       └── templates/           # Server-side view templates (e.g., Thymeleaf, if used)
 │   └── test/
-│       └── java/                 # Test source code
-└── target/                     # Compiled code and packaged JAR
+│       └── java/                 # Java source code for unit and integration tests
+└── target/                     # Directory for compiled code, packaged JAR/WAR files, and build artifacts
 ```
 
 ## Contributing
